@@ -1,0 +1,24 @@
+{% extends 'basePages/base.html'%}
+
+{% block head %}
+    <title>Friends</title>
+{%  endblock %}
+
+
+{% block body %}
+<h3>Friends</h3>
+<h2>{{request.user}}</h2>
+<!--<a href="{% url  'allusers' %}">Add to friends</a>-->
+{% for friend in friends%}
+<!--{% if friend.id2.id is not request.user.id %}-->
+
+<div class="col-md-6" >
+
+        <h3>{{friend.id2}}</h3>
+
+        <a href="{% url  'chatpage' user.id %}">Chat</a>
+</div>
+<!--{%endif %}-->
+{% endfor %}
+
+{% endblock%}
