@@ -1,4 +1,3 @@
-# from pyexpat.errors import messages
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
@@ -6,8 +5,6 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from chat.forms import *
 from chat.models import *
-# from
-# from friends import *
 
 
 def registrationPage(request):
@@ -45,7 +42,6 @@ def loginPage(request):
         context = {
 
         }
-            # return render(request, 'forms/registration.html', context)
         return render(request, 'forms/login.html', context)
 
 @login_required(login_url='login')
@@ -95,9 +91,6 @@ def listRequestFriend(request):
     context  = {
         'reqs' : reqs
     }
-    # print(reqs[0])
-    # print(reqs._fields())
-    # reqs._fields()
     return render(request,'pages/requestpage.html',context)
 
 
@@ -128,7 +121,6 @@ def chatPage(request, pk):
                 'messages': messages
             }
             return render(request, 'pages/chatpage.html', context)
-        # return redirect('chatpage/'+str(receiveUser.id))
     messages = Messages.objects.all().filter(receiver = request.user, sender = receiveUser)
     context  = {
         'form': form,
